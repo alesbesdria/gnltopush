@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-int			get_line(int const fd, char ** line, Elem * Curr, int nbCharLine)
+int			get_line(int const fd, char **line, Elem *Curr, int nbCharLine)
 {
 	while (1)
 	{
@@ -41,7 +41,7 @@ int			get_line(int const fd, char ** line, Elem * Curr, int nbCharLine)
 	}
 }
 
-int			get_next_line(int const fd, char ** line)
+int			get_next_line(int const fd, char **line)
 {
 			Elem			*Curr;
 			static List		*myList = NULL;
