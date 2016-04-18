@@ -27,6 +27,6 @@ typedef struct		TElement
 	struct TElement	*next;
 }					Elem;
 
-int	get_next_line(int const fd, char ** line);
+int	get_next_line(int const fd, char **line);
 
 #endif
