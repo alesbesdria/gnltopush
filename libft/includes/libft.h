@@ -139,7 +139,7 @@ int					pf_solve_flags(char **src, int *width, int *precision, va_list *ap);
 char				*pf_apply_flags(char **str, void *ptr, va_list *ap);
 char				*pf_itoa(void *ptr, char output, int flags);
 
-typedef 			struct TList
+typedef struct		TList
 {
 	void			*first;
 }					List;
