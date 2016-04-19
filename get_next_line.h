@@ -6,7 +6,7 @@
 /*   By: mmeirsma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/12 14:42:57 by mmeirsma          #+#    #+#             */
-/*   Updated: 2016/04/19 14:46:41 by mmeirsma         ###   ########.fr       */
+/*   Updated: 2016/04/19 16:04:51 by mmeirsma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 
 # define BUFF_SIZE 1
 
-typedef struct		TElement
+typedef struct		s_elem
 {
 	char			buff[BUFF_SIZE];
-	long long		FilePosition;
-	long long		FileNbCharRead;
+	long long		fileposition;
+	long long		filenbcharread;
 	int				fd;
-	struct TElement	*next;
-}					Elem;
+	struct s_elem	*next;
+}					t_elem;
 
 int					get_next_line(int const fd, char **line);
 

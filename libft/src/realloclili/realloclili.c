@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   jpm.c                                              :+:      :+:    :+:   */
+/*   realloclili.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmeirsma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/12 14:27:04 by mmeirsma          #+#    #+#             */
-/*   Updated: 2016/04/12 14:27:12 by mmeirsma         ###   ########.fr       */
+/*   Created: 2016/04/19 15:33:18 by mmeirsma          #+#    #+#             */
+/*   Updated: 2016/04/19 15:53:30 by mmeirsma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-List	*initialisation()
+t_l		*initialisation(void)
 {
-	List *List = malloc(sizeof(List));
-	if (List == NULL/* | element == NULL*/)
+	t_l		*list;
+
+	list = malloc(sizeof(list));
+	if (list == NULL)
 	{
-		return(NULL);
+		return (NULL);
 	}
-	List->first = NULL;
-	return List;
+	list->first = NULL;
+	return (list);
 }
 
-void	realloc_str(char ** Source, long long len, long long lenmore)
+void	realloc_str(char **source, long len, long lenmore)
 {
-void	*temp;
+	void	*temp;
 
-	temp = *Source;
-	*Source = malloc(len + lenmore + 1);
- 	ft_memset(*Source, '\0', len + lenmore + 1);
-	ft_strncpy(*Source, temp, len);
- 	free(temp);
+	temp = *source;
+	*source = malloc(len + lenmore + 1);
+	ft_memset(*source, '\0', len + lenmore + 1);
+	ft_strncpy(*source, temp, len);
+	free(temp);
 }
-

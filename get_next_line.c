@@ -6,36 +6,36 @@
 /*   By: mmeirsma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/12 14:51:34 by mmeirsma          #+#    #+#             */
-/*   Updated: 2016/04/19 14:44:52 by mmeirsma         ###   ########.fr       */
+/*   Updated: 2016/04/19 16:03:36 by mmeirsma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int			get_line(int const fd, char **line, Elem *Curr, int nbCharLine)
+int			get_line(int const fd, char **line, t_elem *curr, int nbcharline)
 {
 	while (1)
 	{
-		if ((Curr->FileNbCharRead == 0)
-			|| (Curr->FilePosition == Curr->FileNbCharRead))
+		if ((curr->filenbcharread == 0)
+			|| (curr->fileposition == curr->filenbcharread))
 		{
-			if ((Curr->FileNbCharRead = read(fd, Curr->buff, BUFF_SIZE)) == 0)
+			if ((curr->filenbcharread = read(fd, curr->buff, BUFF_SIZE)) == 0)
 				return (*line[0] == 0 ? 0 : 1);
-			Curr->FilePosition = 0;
-			realloc_str(line, nbCharLine, Curr->FileNbCharRead);
+			curr->fileposition = 0;
+			realloc_str(line, nbcharline, curr->filenbcharread);
 		}
-		while (Curr->FilePosition < Curr->FileNbCharRead)
+		while (curr->fileposition < curr->filenbcharread)
 		{
-			if (Curr->buff[Curr->FilePosition] == '\n')
+			if (curr->buff[curr->fileposition] == '\n')
 			{
-				Curr->FilePosition++;
+				curr->fileposition++;
 				return (1);
 			}
-			line[0][nbCharLine++] = Curr->buff[Curr->FilePosition++];
-			if (Curr->FilePosition == Curr->FileNbCharRead)
+			line[0][nbcharline++] = curr->buff[curr->fileposition++];
+			if (curr->fileposition == curr->filenbcharread)
 			{
-				Curr->FileNbCharRead = 0;
-				Curr->FilePosition = 0;
+				curr->filenbcharread = 0;
+				curr->fileposition = 0;
 			}
 		}
 	}
@@ -43,26 +43,26 @@ int			get_line(int const fd, char **line, Elem *Curr, int nbCharLine)
 
 int			get_next_line(int const fd, char **line)
 {
-	Elem			*Curr;
-	static List		*myList = NULL;
+	t_elem			*curr;
+	static t_l		*mylist = NULL;
 	char			c[1];
 
-	myList = myList ? myList : initialisation();
-	if ((fd < 0) || (myList == NULL) || (read(fd, c, 0) == -1) || !line)
+	mylist = mylist ? mylist : initialisation();
+	if ((fd < 0) || (mylist == NULL) || (read(fd, c, 0) == -1) || !line)
 		return (-1);
-	Curr = myList->first;
-	while ((Curr != NULL) && (Curr->fd != fd))
-		Curr = Curr->next;
-	if (Curr == NULL)
+	curr = mylist->first;
+	while ((curr != NULL) && (curr->fd != fd))
+		curr = curr->next;
+	if (curr == NULL)
 	{
-		Curr = malloc(sizeof(Elem));
-		Curr->FilePosition = 0;
-		Curr->fd = fd;
-		Curr->next = myList->first;
-		myList->first = Curr;
-		Curr->FileNbCharRead = 0;
+		curr = malloc(sizeof(t_elem));
+		curr->fileposition = 0;
+		curr->fd = fd;
+		curr->next = mylist->first;
+		mylist->first = curr;
+		curr->filenbcharread = 0;
 	}
 	*line = malloc(1);
 	line[0][0] = '\0';
-	return (get_line(fd, line, Curr, 0));
+	return (get_line(fd, line, curr, 0));
 }
