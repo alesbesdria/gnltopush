@@ -6,7 +6,7 @@
 /*   By: mmeirsma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/12 14:04:18 by mmeirsma          #+#    #+#             */
-/*   Updated: 2016/04/12 15:16:58 by mmeirsma         ###   ########.fr       */
+/*   Updated: 2016/04/19 14:50:06 by mmeirsma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,16 +128,16 @@ int					**ft_intboardset(int x, int y, int c);
 size_t				ft_atoi_base(const char *str, int base);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
-int					ft_isspace(char	s);
-void				ft_swap(int *a, int* b);
+int					ft_isspace(char s);
+void				ft_swap(int *a, int *b);
 
 /*
 **							PRINTF USAGE
 */
 
-int					pf_solve_flags(char **src, int *width, int *precision, va_list *ap);
-char				*pf_apply_flags(char **str, void *ptr, va_list *ap);
-char				*pf_itoa(void *ptr, char output, int flags);
+int		pf_solve_flags(char **src, int *width, int *precision, va_list *ap);
+char	*pf_apply_flags(char **str, void *ptr, va_list *ap);
+char	*pf_itoa(void *ptr, char output, int flags);
 
 typedef struct		TList
 {
@@ -148,4 +148,3 @@ List				*initialisation();
 void				realloc_str(char **Source, long long len, long long lenmore);
 
 #endif
-
