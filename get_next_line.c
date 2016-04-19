@@ -6,7 +6,7 @@
 /*   By: mmeirsma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/12 14:51:34 by mmeirsma          #+#    #+#             */
-/*   Updated: 2016/04/12 14:58:04 by mmeirsma         ###   ########.fr       */
+/*   Updated: 2016/04/19 14:44:52 by mmeirsma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ int			get_line(int const fd, char **line, Elem *Curr, int nbCharLine)
 
 int			get_next_line(int const fd, char **line)
 {
-			Elem			*Curr;
-			static List		*myList = NULL;
-			char			c[1];
+	Elem			*Curr;
+	static List		*myList = NULL;
+	char			c[1];
 
 	myList = myList ? myList : initialisation();
-	if ((fd<0) || (myList == NULL) || (read(fd, c, 0) == -1) || !line)
+	if ((fd < 0) || (myList == NULL) || (read(fd, c, 0) == -1) || !line)
 		return (-1);
 	Curr = myList->first;
 	while ((Curr != NULL) && (Curr->fd != fd))
-		Curr = Curr-> next;
+		Curr = Curr->next;
 	if (Curr == NULL)
 	{
 		Curr = malloc(sizeof(Elem));
@@ -64,5 +64,5 @@ int			get_next_line(int const fd, char **line)
 	}
 	*line = malloc(1);
 	line[0][0] = '\0';
-	return (get_line(fd, line, Curr,0));
+	return (get_line(fd, line, Curr, 0));
 }
