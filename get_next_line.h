@@ -6,7 +6,7 @@
 /*   By: mmeirsma <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/12 14:42:57 by mmeirsma          #+#    #+#             */
-/*   Updated: 2016/04/19 16:23:13 by mmeirsma         ###   ########.fr       */
+/*   Updated: 2016/04/26 13:30:29 by mmeirsma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include "./libft/includes/libft.h"
 
-# define BUFF_SIZE 1
+# define BUFF_SIZE 42
 
 typedef struct		s_elem
 {
